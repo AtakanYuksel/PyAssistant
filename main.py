@@ -13,7 +13,7 @@ def tick(clk):
     clk.after(1000, lambda: tick(clk))
 #
 #
-my_dict = config_operations.read_cfg()
+my_dict = config_operations.read_cfg() #anan
 print(my_dict)
 #
 #
