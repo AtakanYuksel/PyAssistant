@@ -84,14 +84,14 @@ calculator_checkbox = my_class.MyCheckButton("Open Calculator", calculator_var, 
 calculator_button = my_class.MyButton("Run", checkbox_button_frame, 5, 10, "calculator")
 #
 # text, window, row, column, my_dict
-execute_button = my_class.MyExecuteButton("Execute", root, 10, 0, my_dict)
+execute_button = my_class.MyExecuteButton("Execute", checkbox_button_frame, 100, 10, my_dict)
 #
 #
-save_config_button = Button(root, text="Save settings",
+save_config_button = Button(checkbox_button_frame, text="Save settings",
                             bg="#2C313C", fg="#0496d8", width="12",
                             activebackground="#2C313C", activeforeground="#0496d8",
                             command=lambda: config_operations.save_cfg(my_dict))
-save_config_button.grid(row=11, column=0)
+save_config_button.grid(row=101, column=10)
 #
 #
 root.mainloop()
