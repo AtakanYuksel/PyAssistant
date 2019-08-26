@@ -9,7 +9,7 @@ def read_cfg():
             (key, val) = a_line.split(" : ")
             my_dict[key] = int(val.strip())
         config_file.close()
-    except FileNotFoundError:   # create/reset the file if it does not exist or corrupt
+    except FileNotFoundError:   # create/reset the file if it does not exist or is corrupt
         open("config.txt", "w")
     return my_dict
 
