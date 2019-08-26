@@ -12,8 +12,8 @@ class MyCheckButton:
         checkbox = Checkbutton(window, text=text, variable=var, width="20",
                                bg="#2C313C", fg="#0496d8", selectcolor="black",
                                activebackground="#2C313C", activeforeground="#0496d8",
-                               command=lambda: self.actions(var_str, var, my_dict))\
-            .grid(row=row, column=column, sticky=sticky)
+                               command=lambda: self.actions(var_str, var, my_dict))
+        checkbox.grid(row=row, column=column, sticky=sticky)
 
 
     def actions(self, var_str, var_val, dic):
@@ -26,8 +26,8 @@ class MyButton:
         button = Button(window, text=text,
                         bg="#2C313C", fg="#0496d8", width="12",
                         activebackground="#2C313C", activeforeground="#0496d8",
-                        command=lambda: self.run(run_cmd))\
-        .grid(row=row, column=column, padx=5, pady=2)
+                        command=lambda: self.run(run_cmd))
+        button.grid(row=row, column=column, padx=5, pady=2)
 
 
     def run(self, string):
@@ -59,8 +59,8 @@ class MyExecuteButton:
         button = Button(window, text=text,
                         bg="#2C313C", fg="#0496d8", width="12",
                         activebackground="#2C313C", activeforeground="#0496d8",
-                        command=lambda: self.execute(my_dict))\
-            .grid(row=row, column=column, pady=15)
+                        command=lambda: self.execute(my_dict))
+        button.grid(row=row, column=column, pady=15)
 
 
     def execute(self, dic):
