@@ -18,7 +18,7 @@ class MyCheckButton:
 
     def actions(self, var_str, var_val, dic):
         dic.update({var_str: var_val.get()})
-        print(dic)      # to be removed later
+        print(dic)      # TODO: Remove this line later
 
 
 class MyButton:
@@ -47,7 +47,7 @@ class MyButton:
             print("How are you here?")
 
 
-class myClock:
+class MyClock:
     def __init__(self, window):
         my_clock = Label(window, bg="green")
         my_clock.grid(row=0, column=0)

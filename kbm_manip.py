@@ -2,7 +2,7 @@ import pyautogui as pug
 import time
 
 
-def activate_hotspot():     # works only on 1920x1080 res
+def activate_hotspot():     # works only on 1920x1080 res TODO: using .size() make it relative
     pug.moveTo(1880, 1079)
     time.sleep(2)
     pug.moveTo(1880, 1050)
