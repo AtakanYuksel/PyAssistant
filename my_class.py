@@ -18,7 +18,7 @@ class MyCheckButton:
 
     def actions(self, var_str, var_val, dic):
         dic.update({var_str: var_val.get()})
-        print(dic)      # remove later
+        print(dic)      # to be removed later
 
 
 class MyButton:
