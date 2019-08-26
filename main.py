@@ -5,6 +5,7 @@ import config_operations
 import my_class
 
 import time
+import datetime
 #
 #
 def tick(clk):
@@ -13,8 +14,12 @@ def tick(clk):
     clk.after(1000, lambda: tick(clk))
 #
 #
+def show_date(date_label):
+    date_label.config(text=datetime.date.today())
+#
+#
 my_dict = config_operations.read_cfg()
-print(my_dict)
+print(my_dict)  # TODO: Remove this line later.
 #
 #
 root = Tk()
@@ -24,15 +29,19 @@ root.configure(background="#21252B")
 # root.resizable(width=False, height=False)
 #
 #
-clock_frame = Frame(root)
-clock_frame.grid(row=0, column=0)
-my_clock = Label(clock_frame, font=('calibri', 40, 'bold'), background="#2C313C", foreground="#0496d8")
+clock_date_frame = Frame(root)
+clock_date_frame.grid(row=0, column=0)
+my_clock = Label(clock_date_frame, font=('calibri', 40, 'bold'), background="#2C313C", foreground="#0496d8")
 my_clock.grid(row=0, column=0)
 tick(my_clock)
 #
+my_date = Label(clock_date_frame, font=("calibri", 10), background="#2C313C", foreground="#0496d8")
+my_date.grid(row=1, column=0, sticky=NSEW)  # NSEW fills
+show_date(my_date)
+#
 #
 checkbox_button_frame = Frame(root, bg="#21252B", bd=8)
-checkbox_button_frame.grid(row=0, column=1)
+checkbox_button_frame.grid(row=0, column=4)
 #
 #
 hotspot_var = IntVar()
@@ -75,17 +84,14 @@ calculator_checkbox = my_class.MyCheckButton("Open Calculator", calculator_var, 
 calculator_button = my_class.MyButton("Run", checkbox_button_frame, 5, 10, "calculator")
 #
 # text, window, row, column, my_dict
-execute_button = my_class.MyExecuteButton\
-    ("Execute", root, 10, 0, my_dict)
+execute_button = my_class.MyExecuteButton("Execute", root, 10, 0, my_dict)
 #
 #
 save_config_button = Button(root, text="Save settings",
                             bg="#2C313C", fg="#0496d8", width="12",
                             activebackground="#2C313C", activeforeground="#0496d8",
-                            command=lambda: config_operations.save_cfg(my_dict)).grid(row=11, column=0)
+                            command=lambda: config_operations.save_cfg(my_dict))
+save_config_button.grid(row=11, column=0)
 #
 #
 root.mainloop()
-# TO-DO
-# move execute-save settings to bottom.
-
