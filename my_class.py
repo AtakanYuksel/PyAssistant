@@ -60,7 +60,7 @@ class MyExecuteButton:
                         bg="#2C313C", fg="#0496d8", width="12",
                         activebackground="#2C313C", activeforeground="#0496d8",
                         command=lambda: self.execute(my_dict))
-        button.grid(row=row, column=column, pady=15)
+        button.grid(row=row, column=column, sticky=W, pady=15, padx=5)
 
 
     def execute(self, dic):
