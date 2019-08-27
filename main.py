@@ -28,7 +28,7 @@ print(my_dict)  # TODO: Remove this line later.
 #
 #
 root = Tk()
-# root.geometry("800x600+0+0")
+root.geometry("560x800+200+200")
 root.title("PyAssistant")
 root.configure(background="#21252B")
 # root.resizable(width=False, height=False)
@@ -54,9 +54,9 @@ checkbox_button_frame.grid(row=0, column=1)
 #
 #
 to_do_frame = Frame(root)
-to_do_frame.grid(row=1, column=0)
+to_do_frame.grid(row=1, column=0, columnspan=2)
 to_do_title = Label(to_do_frame, font=20, background="#2C313C", foreground="#0496d8", text="TO-DO's")
-to_do_title.grid(row=0, column=0)
+to_do_title.pack(side=TOP)
 #
 #
 hotspot_var = IntVar()
