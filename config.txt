@@ -1,6 +1,0 @@
-calendar_var : 1
-youtube_var : 1
-calculator_var : 1
-hotspot_var : 1
-gmail_var : 1
-spotify_var : 1
