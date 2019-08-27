@@ -24,7 +24,7 @@ class MyCheckButton:
 class MyButton:
     def __init__(self, text, window, row, column, run_cmd):
         button = Button(window, text=text,
-                        bg="#2C313C", fg="#0496d8", width="12",
+                        bg="#2C313C", fg="#0496d8", width="6",
                         activebackground="#2C313C", activeforeground="#0496d8",
                         command=lambda: self.run(run_cmd))
         button.grid(row=row, column=column, padx=5, pady=2)
@@ -80,3 +80,19 @@ class MyExecuteButton:
                     system("calc")
                 else:
                     print("How are you here?")
+
+
+class MyTODOAdderButton: # TODO: Adds TODO's with corresponding text in the Entry
+    def __init__(self, window, text_var, row, column):
+        entry_field = Entry(window, bg="#2C313C", fg="#0496d8", textvariable=text_var)
+        entry_field.grid(row=row, column=column, sticky=E)
+        button_add = Button(window, bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
+                            text="Add")
+        button_add.grid(row=row, column=column, sticky=W)
+
+
+class MyFinishedClearButton:
+    def __init__(self, window, row, column):
+        button_clear = Button(window, bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
+                              text="Clear All")
+        button_clear.grid(row=row, column=column, sticky=S)

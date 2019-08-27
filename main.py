@@ -19,8 +19,8 @@ def show_date(date_label):
 
 
 def show_day(day_label):
-    my_days = ["Monday, Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    day_label.config(text=my_days[datetime.date.today().isoweekday()])
+    my_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    day_label.config(text=my_days[datetime.date.today().isoweekday() - 1])
 #
 #
 my_dict = config_operations.read_cfg()
@@ -28,7 +28,7 @@ print(my_dict)  # TODO: Remove this line later.
 #
 #
 root = Tk()
-root.geometry("560x800+200+200")
+root.geometry("515x800+200+200")
 root.title("PyAssistant")
 root.configure(background="#21252B")
 # root.resizable(width=False, height=False)
@@ -41,22 +41,16 @@ my_clock.grid(row=0, column=0)
 tick(my_clock)
 #
 my_date = Label(clock_date_frame, font=("calibri", 20), background="#2C313C", foreground="#0496d8")
-my_date.grid(row=1, column=0, sticky=NSEW)  # NSEW fills
+my_date.grid(row=1, column=0, sticky=EW)  # NSEW fills
 show_date(my_date)
 #
 my_day = Label(clock_date_frame, font=("calibri", 15), background="#2C313C", foreground="#0496d8")
-my_day.grid(row=2, column=0, sticky=NSEW)
+my_day.grid(row=2, column=0, sticky=EW)
 show_day(my_day)
 #
 #
 checkbox_button_frame = Frame(root, bg="#21252B", bd=4)
 checkbox_button_frame.grid(row=0, column=1)
-#
-#
-to_do_frame = Frame(root)
-to_do_frame.grid(row=1, column=0, columnspan=2)
-to_do_title = Label(to_do_frame, font=20, background="#2C313C", foreground="#0496d8", text="TO-DO's")
-to_do_title.pack(side=TOP)
 #
 #
 hotspot_var = IntVar()
@@ -107,6 +101,23 @@ save_config_button = Button(clock_date_frame, text="Save settings",
                             activebackground="#2C313C", activeforeground="#0496d8",
                             command=lambda: config_operations.save_cfg(my_dict))
 save_config_button.grid(row=3, column=0, sticky=E)
+#
+#
+to_do_frame = Frame(root, bg="#2C313C", bd=4)
+to_do_frame.grid(row=1, column=0)   # compared to root
+to_do_title = Label(to_do_frame, font=20, background="#2C313C", foreground="#0496d8", text="TO-DO's")
+to_do_title.grid(row=0, column=0, padx=75)
+#
+todo_text_entry_var = StringVar()
+todo_text_entry = my_class.MyTODOAdderButton(to_do_frame, todo_text_entry_var, 1, 0)
+#
+#
+to_do_finished_frame = Frame(root, bg="#2C313C", bd=4)
+to_do_finished_frame.grid(row=1, column=1)  # compared to root
+to_do_finished_title = Label(to_do_finished_frame, font=20, background="#2C313C", foreground="#0496d8", text="FINISHED")
+to_do_finished_title.grid(row=0, column=1, padx=70)
+#
+to_do_finished_clear = my_class.MyFinishedClearButton(to_do_finished_frame, 1, 1)
 #
 #
 root.mainloop()
