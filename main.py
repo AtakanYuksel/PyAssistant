@@ -31,7 +31,7 @@ root = Tk()
 root.geometry("515x800+200+200")
 root.title("PyAssistant")
 root.configure(background="#21252B")
-# root.resizable(width=False, height=False)
+root.resizable(width=False, height=False)
 #
 #
 clock_date_frame = Frame(root, bg="#21252B", bd=4)
