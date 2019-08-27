@@ -35,7 +35,7 @@ root.configure(background="#21252B")
 #
 #
 clock_date_frame = Frame(root, bg="#21252B", bd=4)
-clock_date_frame.pack(side=LEFT, fill=Y)
+clock_date_frame.grid(row=0, column=0)
 my_clock = Label(clock_date_frame, font=('calibri', 40, 'bold'), background="#2C313C", foreground="#0496d8")
 my_clock.grid(row=0, column=0)
 tick(my_clock)
@@ -50,7 +50,13 @@ show_day(my_day)
 #
 #
 checkbox_button_frame = Frame(root, bg="#21252B", bd=4)
-checkbox_button_frame.pack(side=RIGHT, fill=Y)
+checkbox_button_frame.grid(row=0, column=1)
+#
+#
+to_do_frame = Frame(root)
+to_do_frame.grid(row=1, column=0)
+to_do_title = Label(to_do_frame, font=20, background="#2C313C", foreground="#0496d8", text="TO-DO's")
+to_do_title.grid(row=0, column=0)
 #
 #
 hotspot_var = IntVar()
