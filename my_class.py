@@ -96,10 +96,27 @@ class MyTODOAdderButton: # TODO: Adds TODO's with corresponding text in the Entr
     def add_to_do(self, window2, text_varr):
         my_to_do_str = text_varr.get()
         my_text_field = Label(window2, text=str(MyTODOAdderButton.my_row + 1) + ") " + my_to_do_str,
-                              bg="#2C313C", fg="#0496d8", width=29, anchor=W)
-        my_text_field.grid(row=MyTODOAdderButton.my_row, column=0, pady=1, sticky=NSEW)
+                              bg="#2C313C", fg="#0496d8", width=25, anchor=W)
+        my_text_field.grid(row=MyTODOAdderButton.my_row, column=1, pady=1)
+
+        my_exit_button = Button(window2, text="X",
+                                bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
+                                command=lambda: self.to_do_destroy(my_text_field, my_exit_button, my_to_finish_button),
+                                width=1)
+        my_exit_button.grid(row=MyTODOAdderButton.my_row, column=2)
+
+        my_to_finish_button = Button(window2, text="✓",
+                                     bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
+                                     width=1)
+        my_to_finish_button.grid(row=MyTODOAdderButton.my_row, column=0)
         MyTODOAdderButton.my_row += 1
 
+
+    def to_do_destroy(self, my_text_field, my_button, my_to_finish_button):
+        my_text_field.destroy()
+        my_button.destroy()
+        my_to_finish_button.destroy()
+        MyTODOAdderButton.my_row -= 1
 
 
 class MyFinishedClearButton:
