@@ -38,7 +38,7 @@ class MyButton:
         elif string == "youtube":
             webOpen("https://www.youtube.com/")
         elif string == "spotify":
-            webOpen("https://www.spotify.com/")
+            system("explorer.exe shell:appsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
         elif string == "calendar":
             system("explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
         elif string == "calculator":
@@ -73,7 +73,7 @@ class MyExecuteButton:
                 elif key == "youtube_var":
                     webOpen("https://www.youtube.com/")
                 elif key == "spotify_var":
-                    webOpen("https://www.spotify.com/")
+                    system("explorer.exe shell:appsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
                 elif key == "calendar_var":
                     system("explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
                 elif key == "calculator_var":
