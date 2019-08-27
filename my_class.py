@@ -9,7 +9,7 @@ class MyCheckButton:
         for key, val in my_dict.items():
             if val == 1 and key == var_str:
                 var.set(1)
-        checkbox = Checkbutton(window, text=text, variable=var, width="20",
+        checkbox = Checkbutton(window, text=text, variable=var, width="20", anchor=W,
                                bg="#2C313C", fg="#0496d8", selectcolor="black",
                                activebackground="#2C313C", activeforeground="#0496d8",
                                command=lambda: self.actions(var_str, var, my_dict))
@@ -83,12 +83,23 @@ class MyExecuteButton:
 
 
 class MyTODOAdderButton: # TODO: Adds TODO's with corresponding text in the Entry
-    def __init__(self, window, text_var, row, column):
-        entry_field = Entry(window, bg="#2C313C", fg="#0496d8", textvariable=text_var)
-        entry_field.grid(row=row, column=column, sticky=E)
-        button_add = Button(window, bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
-                            text="Add")
-        button_add.grid(row=row, column=column, sticky=W)
+    my_row = 0
+
+    def __init__(self, window1, window2, text_var):
+        entry_field = Entry(window1, bg="#2C313C", fg="#0496d8", textvariable=text_var)
+        entry_field.grid(row=1, column=0, sticky=E)
+        button_add = Button(window1, bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
+                            text="Add", command=lambda: self.add_to_do(window2, text_var))
+        button_add.grid(row=1, column=0, sticky=W)
+
+
+    def add_to_do(self, window2, text_varr):
+        my_to_do_str = text_varr.get()
+        my_text_field = Label(window2, text=str(MyTODOAdderButton.my_row + 1) + ") " + my_to_do_str,
+                              bg="#2C313C", fg="#0496d8", width=29, anchor=W)
+        my_text_field.grid(row=MyTODOAdderButton.my_row, column=0, pady=1, sticky=NSEW)
+        MyTODOAdderButton.my_row += 1
+
 
 
 class MyFinishedClearButton:
