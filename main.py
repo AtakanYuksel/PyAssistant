@@ -28,11 +28,15 @@ def show_day(day_label):
 my_dict = config_operations.read_cfg()
 #
 #
+my_list = config_operations.read_todo()
+print(my_list)
+#
+#
 root = Tk()
-root.geometry("530x800+200+200")
+root.geometry("530x1080+1390+0")
 root.title("PyAssistant")
 root.configure(background="#21252B")
-# root.resizable(width=False, height=1080)
+root.resizable(width=False, height=True)
 #
 #
 clock_date_frame = Frame(root, bg="#21252B", bd=4)
@@ -123,7 +127,7 @@ to_do_finished_list.grid(row=100, column=1)
 #
 #
 todo_text_entry_var = StringVar()
-todo_text_entry = my_class.MyTODOAdderButton(to_do_frame, to_do_list_frame, todo_text_entry_var)
+todo_text_entry = my_class.MyTODOAdderButton(to_do_frame, to_do_list_frame, todo_text_entry_var, my_list)
 #
 #
 root.mainloop()

@@ -82,15 +82,31 @@ class MyTODOAdderButton:
 
     my_finished_row = 150
 
-    def __init__(self, to_do_frame, to_do_list_frame, text_var):
+    def __init__(self, to_do_frame, to_do_list_frame, text_var, my_list):
         entry_field = Entry(to_do_frame, bg="#2C313C", fg="#0496d8", textvariable=text_var)
         entry_field.grid(row=0, column=1, padx=5)
         button_add = Button(to_do_frame, bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
                             activeforeground="#0496d8",
-                            text="Add", command=lambda: self.add_to_do(to_do_list_frame, text_var))
+                            text="Add", command=lambda: self.add_to_do(to_do_list_frame, text_var, 0))
         button_add.grid(row=0, column=2)
+        self.preset_todos_finished(to_do_list_frame, my_list)
 
-    def add_to_do(self, to_do_list_frame, text_var):
+
+    def preset_todos_finished(self, to_do_list_frame, my_list):
+        my_line = StringVar()
+        if my_list:
+            for i in my_list[1:]:
+                if i != "[finished]":
+                    my_line.set(i)
+                    self.add_to_do(to_do_list_frame, my_line, 0)
+                else:
+                    for j in my_list[my_list.index(i)+1:]:
+                        my_line.set(j)
+                        self.add_to_do(to_do_list_frame, my_line, 1)
+                    break
+
+
+    def add_to_do(self, to_do_list_frame, text_var, finish_flag):
         my_to_do_str = text_var.get()
         text_var.set("")
         my_text_field = Label(to_do_list_frame, text="- " + my_to_do_str,
@@ -110,6 +126,9 @@ class MyTODOAdderButton:
                                                                            my_remove_button, my_to_finish_button),
                                      width=3, height=1)
         my_to_finish_button.grid(row=MyTODOAdderButton.my_row, column=0)
+
+        if finish_flag == 1:
+            self.move_to_finished(to_do_list_frame, my_text_field, my_remove_button, my_to_finish_button)
         MyTODOAdderButton.my_row += 1
 
     def to_do_destroy(self, my_text_field, my_button, my_to_finish_button):
