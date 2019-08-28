@@ -100,14 +100,14 @@ class MyTODOAdderButton:
                               bg="#2C313C", fg="#0496d8", width=50, anchor=W)
         my_text_field.grid(row=MyTODOAdderButton.my_row, column=1, pady=1)
 
-        my_remove_button = Button(to_do_list_frame, text="X",
+        my_remove_button = Button(to_do_list_frame, text=chr(9587),
                                   bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
                                   command=lambda: self.to_do_destroy(my_text_field, my_remove_button,
                                                                      my_to_finish_button),
                                   width=3, height=1)
         my_remove_button.grid(row=MyTODOAdderButton.my_row, column=2)
 
-        my_to_finish_button = Button(to_do_list_frame, text="✓",
+        my_to_finish_button = Button(to_do_list_frame, text=chr(10003),
                                      bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
                                      command=lambda: self.move_to_finished(to_do_list_frame, my_text_field,
                                                                            my_remove_button, my_to_finish_button),
@@ -154,7 +154,7 @@ class MyTODOAdderButton:
         my_text_field.grid_forget()
         my_text_field.grid(row=MyTODOAdderButton.my_row, column=1)
 
-        my_new_remove_button = Button(to_do_list_frame, text="X",
+        my_new_remove_button = Button(to_do_list_frame, text=chr(9587),
                                       bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
                                       activeforeground="#0496d8",
                                       command=lambda: self.to_do_destroy(my_text_field, my_new_remove_button,
@@ -162,7 +162,7 @@ class MyTODOAdderButton:
                                       width=3, height=1)
         my_new_remove_button.grid(row=MyTODOAdderButton.my_row, column=2)
 
-        my_new_to_finish_button = Button(to_do_list_frame, text="✓",
+        my_new_to_finish_button = Button(to_do_list_frame, text=chr(10003),
                                          bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
                                          activeforeground="#0496d8",
                                          command=lambda: self.move_to_finished(to_do_list_frame, my_text_field,
