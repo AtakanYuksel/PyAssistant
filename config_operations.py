@@ -4,7 +4,7 @@ from tkinter import messagebox
 def read_cfg():
     my_dict = {}
     try:
-        config_file = open("config.txt", "r+")  # try to open the file
+        config_file = open("config.txt", "r")  # try to open the file
         for a_line in config_file:
             (key, val) = a_line.split(" : ")
             my_dict[key] = int(val.strip())
@@ -23,3 +23,14 @@ def save_cfg(my_dict):
         messagebox.showinfo("Info", "Saved successfully.")
     except:
         exit(-1)
+
+
+def read_todo():
+    my_list = []
+    try:
+        to_do = open("todo.txt", "r")
+        for a_line in to_do:
+            my_list.append(a_line.strip())
+    except FileNotFoundError:   # create/reset the file if it does not exist or is corrupt.
+        to_do = open("todo.txt", "w")
+    return my_list
