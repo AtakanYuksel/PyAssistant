@@ -1,8 +1,8 @@
 /.idea
 /__pycache__
 /venv
-icon.ico
 test.py
-config.txt
-color.png
-todo.txt
+kbm_manip.py
+*.txt
+*.png
+*.ico

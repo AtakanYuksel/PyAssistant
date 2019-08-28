@@ -34,3 +34,6 @@ def read_todo():
     except FileNotFoundError:   # create/reset the file if it does not exist or is corrupt.
         to_do = open("todo.txt", "w")
     return my_list
+
+
+# def write_todo(my_list): # TODO: write back to todo.txt with proper [to-do] and [finished] tags. insert before and after [finished]

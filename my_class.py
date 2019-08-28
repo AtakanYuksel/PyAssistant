@@ -29,15 +29,17 @@ class MyButton:
 
     def run(self, string):
         if string == "hotspot":
-            kbm_manip.activate_hotspot()
+            system("PowerShell.exe -ExecutionPolicy Bypass -Command \" & \'C:\\Users\\Atakan\\Desktop\\tkinter\\hotspot.ps1\'\"")
         elif string == "gmail":
             webOpen("https://mail.google.com/mail/u/0/")
         elif string == "youtube":
             webOpen("https://www.youtube.com/")
         elif string == "spotify":
-            system(r"explorer.exe shell:appsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
+            system(r"explorer.exe shell:appsFolder\
+            SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
         elif string == "calendar":
-            system(r"explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
+            system(r"explorer.exe shell:appsFolder\
+            microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
         elif string == "calculator":
             system("calc")
         else:
@@ -62,7 +64,7 @@ class MyExecuteButton:
         for key, value in dic.items():
             if value == 1:
                 if key == "hotspot_var":
-                    kbm_manip.activate_hotspot()
+                    system("PowerShell.exe -ExecutionPolicy Bypass -Command \" & \'C:\\Users\\Atakan\\Desktop\\hotspot.ps1\'\"")
                 elif key == "gmail_var":
                     webOpen("https://mail.google.com/mail/u/0/")
                 elif key == "youtube_var":
@@ -70,11 +72,15 @@ class MyExecuteButton:
                 elif key == "spotify_var":
                     system(r"explorer.exe shell:appsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
                 elif key == "calendar_var":
-                    system(r"explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
+                    system(
+                        r"explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
                 elif key == "calculator_var":
                     system("calc")
                 else:
                     print("How are you here?")
+
+
+my_Str = "&"
 
 
 class MyTODOAdderButton:
@@ -91,7 +97,6 @@ class MyTODOAdderButton:
         button_add.grid(row=0, column=2)
         self.preset_todos_finished(to_do_list_frame, my_list)
 
-
     def preset_todos_finished(self, to_do_list_frame, my_list):
         my_line = StringVar()
         if my_list:
@@ -100,11 +105,10 @@ class MyTODOAdderButton:
                     my_line.set(i)
                     self.add_to_do(to_do_list_frame, my_line, 0)
                 else:
-                    for j in my_list[my_list.index(i)+1:]:
+                    for j in my_list[my_list.index(i) + 1:]:
                         my_line.set(j)
                         self.add_to_do(to_do_list_frame, my_line, 1)
                     break
-
 
     def add_to_do(self, to_do_list_frame, text_var, finish_flag):
         my_to_do_str = text_var.get()

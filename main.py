@@ -33,7 +33,7 @@ print(my_list)
 #
 #
 root = Tk()
-root.geometry("530x1080+1390+0")
+root.geometry("530x1080+1381+0")
 root.title("PyAssistant")
 root.configure(background="#21252B")
 root.resizable(width=False, height=True)
