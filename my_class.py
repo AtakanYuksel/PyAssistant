@@ -99,15 +99,15 @@ class MyTODOAdderButton: # TODO: Adds TODO's with corresponding text in the Entr
                               bg="#2C313C", fg="#0496d8", width=25, anchor=W)
         my_text_field.grid(row=MyTODOAdderButton.my_row, column=1, pady=1)
 
-        my_exit_button = Button(window2, text="X",
+        my_remove_button = Button(window2, text="X",
                                 bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
-                                command=lambda: self.to_do_destroy(my_text_field, my_exit_button, my_to_finish_button),
-                                width=1)
-        my_exit_button.grid(row=MyTODOAdderButton.my_row, column=2)
+                                command=lambda: self.to_do_destroy(my_text_field, my_remove_button, my_to_finish_button),
+                                width=1, height=1)
+        my_remove_button.grid(row=MyTODOAdderButton.my_row, column=2)
 
         my_to_finish_button = Button(window2, text="✓",
                                      bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
-                                     width=1)
+                                     width=1, height=1)
         my_to_finish_button.grid(row=MyTODOAdderButton.my_row, column=0)
         MyTODOAdderButton.my_row += 1
 
@@ -117,6 +117,9 @@ class MyTODOAdderButton: # TODO: Adds TODO's with corresponding text in the Entr
         my_button.destroy()
         my_to_finish_button.destroy()
         MyTODOAdderButton.my_row -= 1
+
+
+    #def move_to_finished TODO: Make it so that it changes to the finished frame.
 
 
 class MyFinishedClearButton:
