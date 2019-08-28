@@ -15,10 +15,9 @@ class MyCheckButton:
                                command=lambda: self.actions(var_str, var, my_dict))
         checkbox.grid(row=row, column=column, sticky=sticky)
 
-
     def actions(self, var_str, var_val, dic):
         dic.update({var_str: var_val.get()})
-        print(dic)      # TODO: Remove this line later
+        print(dic)  # TODO: Remove this line later
 
 
 class MyButton:
@@ -28,7 +27,6 @@ class MyButton:
                         activebackground="#2C313C", activeforeground="#0496d8",
                         command=lambda: self.run(run_cmd))
         button.grid(row=row, column=column, padx=5, pady=2)
-
 
     def run(self, string):
         if string == "hotspot":
@@ -40,7 +38,8 @@ class MyButton:
         elif string == "spotify":
             system("explorer.exe shell:appsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
         elif string == "calendar":
-            system("explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
+            system(
+                "explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
         elif string == "calculator":
             system("calc")
         else:
@@ -53,7 +52,6 @@ class MyClock:
         my_clock.grid(row=0, column=0)
 
 
-
 class MyExecuteButton:
     def __init__(self, text, window, row, column, my_dict):
         button = Button(window, text=text,
@@ -61,7 +59,6 @@ class MyExecuteButton:
                         activebackground="#2C313C", activeforeground="#0496d8",
                         command=lambda: self.execute(my_dict))
         button.grid(row=row, column=column, sticky=W, pady=15, padx=5)
-
 
     def execute(self, dic):
         for key, value in dic.items():
@@ -75,38 +72,45 @@ class MyExecuteButton:
                 elif key == "spotify_var":
                     system("explorer.exe shell:appsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
                 elif key == "calendar_var":
-                    system("explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
+                    system(
+                        "explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
                 elif key == "calculator_var":
                     system("calc")
                 else:
                     print("How are you here?")
 
 
-class MyTODOAdderButton: # TODO: Adds TODO's with corresponding text in the Entry
+class MyTODOAdderButton:  # TODO: Adds TODO's with corresponding text in the Entry
     my_row = 0
+    my_column = 0
 
-    def __init__(self, window1, window2, text_var):
-        entry_field = Entry(window1, bg="#2C313C", fg="#0496d8", textvariable=text_var)
-        entry_field.grid(row=1, column=0, sticky=E)
-        button_add = Button(window1, bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
-                            text="Add", command=lambda: self.add_to_do(window2, text_var))
-        button_add.grid(row=1, column=0, sticky=W)
+    my_finished_row = 0
+    my_finished_column = 0
 
+    def __init__(self, to_do_frame, to_do_list_frame, text_var):
+        entry_field = Entry(to_do_frame, bg="#2C313C", fg="#0496d8", textvariable=text_var)
+        entry_field.grid(row=0, column=1, padx=5)
+        button_add = Button(to_do_frame, bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
+                            text="Add", command=lambda: self.add_to_do(to_do_list_frame, text_var))
+        button_add.grid(row=0, column=2)
 
-    def add_to_do(self, window2, text_varr):
-        my_to_do_str = text_varr.get()
-        my_text_field = Label(window2, text=str(MyTODOAdderButton.my_row + 1) + ") " + my_to_do_str,
-                              bg="#2C313C", fg="#0496d8", width=25, anchor=W)
+    def add_to_do(self, to_do_list_frame, text_var):
+        my_to_do_str = text_var.get()
+        text_var.set("")
+        my_text_field = Label(to_do_list_frame, text="- " + my_to_do_str,
+                              bg="#2C313C", fg="#0496d8", width=50, anchor=W)
         my_text_field.grid(row=MyTODOAdderButton.my_row, column=1, pady=1)
 
-        my_remove_button = Button(window2, text="X",
-                                bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
-                                command=lambda: self.to_do_destroy(my_text_field, my_remove_button, my_to_finish_button),
-                                width=1, height=1)
+        my_remove_button = Button(to_do_list_frame, text="X",
+                                  bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
+                                  command=lambda: self.to_do_destroy(my_text_field, my_remove_button,
+                                                                     my_to_finish_button),
+                                  width=1, height=1)
         my_remove_button.grid(row=MyTODOAdderButton.my_row, column=2)
 
-        my_to_finish_button = Button(window2, text="✓",
+        my_to_finish_button = Button(to_do_list_frame, text="✓",
                                      bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
+                                     command=lambda: print("finish"),
                                      width=1, height=1)
         my_to_finish_button.grid(row=MyTODOAdderButton.my_row, column=0)
         MyTODOAdderButton.my_row += 1
@@ -116,14 +120,11 @@ class MyTODOAdderButton: # TODO: Adds TODO's with corresponding text in the Entr
         my_text_field.destroy()
         my_button.destroy()
         my_to_finish_button.destroy()
-        MyTODOAdderButton.my_row -= 1
-
-
-    #def move_to_finished TODO: Make it so that it changes to the finished frame.
 
 
 class MyFinishedClearButton:
     def __init__(self, window, row, column):
-        button_clear = Button(window, bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
+        button_clear = Button(window, bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
+                              activeforeground="#0496d8",
                               text="Clear All")
         button_clear.grid(row=row, column=column, sticky=S)

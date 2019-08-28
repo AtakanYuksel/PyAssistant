@@ -28,10 +28,10 @@ print(my_dict)  # TODO: Remove this line later.
 #
 #
 root = Tk()
-root.geometry("515x800+200+200")
+root.geometry("513x800+200+200")
 root.title("PyAssistant")
 root.configure(background="#21252B")
-# root.resizable(width=False, height=False)
+# root.resizable(width=False, height=1080)
 #
 #
 clock_date_frame = Frame(root, bg="#21252B", bd=4)
@@ -104,25 +104,21 @@ save_config_button.grid(row=3, column=0, sticky=E)
 #
 #
 to_do_frame = Frame(root, bg="#2C313C", bd=4)
-to_do_frame.grid(row=1, column=0)   # compared to root
-to_do_title = Label(to_do_frame, font=20, background="#2C313C", foreground="#0496d8", text="TO-DO's")
-to_do_title.grid(row=0, column=0, padx=75)  # compared to to_do_frame
+to_do_frame.grid(row=1, column=0, columnspan=2)   # compared to root
+to_do_title = Label(to_do_frame, font=30, background="#2C313C", foreground="#0496d8", text="TO-DO's", width=25, height=2)
+to_do_title.grid(row=0, column=0)  # compared to to_do_frame
 #
 #
 to_do_list_frame = Frame(root, bg="#21252B", bd=4)
-to_do_list_frame.grid(row=2, column=0, pady=10)
+to_do_list_frame.grid(row=2, column=0, columnspan=2)
+#
+#
+to_do_finished_list = Label(to_do_list_frame, font=30, background="#2C313C", foreground="#0496d8", text="Finished", width=50, height=2)
+to_do_finished_list.grid(row=100, column=1)
 #
 #
 todo_text_entry_var = StringVar()
 todo_text_entry = my_class.MyTODOAdderButton(to_do_frame, to_do_list_frame, todo_text_entry_var)
-#
-#
-to_do_finished_frame = Frame(root, bg="#2C313C", bd=4)
-to_do_finished_frame.grid(row=1, column=1)  # compared to root
-to_do_finished_title = Label(to_do_finished_frame, font=20, background="#2C313C", foreground="#0496d8", text="FINISHED")
-to_do_finished_title.grid(row=0, column=1, padx=70)
-#
-to_do_finished_clear = my_class.MyFinishedClearButton(to_do_finished_frame, 1, 1)
 #
 #
 root.mainloop()
