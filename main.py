@@ -26,7 +26,6 @@ def show_day(day_label):
 #
 #
 my_dict = config_operations.read_cfg()
-print(my_dict)  # TODO: Remove this line later.
 #
 #
 root = Tk()
@@ -56,29 +55,29 @@ checkbox_button_frame.grid(row=0, column=1)
 #
 #
 hotspot_var = IntVar()
-hotspot_checkbox = my_class.MyCheckButton \
-    ("Open Mobile HotSpot", hotspot_var, "hotspot_var", checkbox_button_frame, 0, 4, W, my_dict)
+hotspot_checkbox = my_class.MyCheckButton("Open Mobile HotSpot", hotspot_var, "hotspot_var",
+                                          checkbox_button_frame, 0, 4, W, my_dict)
 #
 hotspot_button = my_class.MyButton("Run", checkbox_button_frame, 0, 10, "hotspot")
 #
 #
 gmail_var = IntVar()
-gmail_checkbox = my_class.MyCheckButton \
-    ("Open Gmail", gmail_var, "gmail_var", checkbox_button_frame, 1, 4, W, my_dict)
+gmail_checkbox = my_class.MyCheckButton("Open Gmail", gmail_var, "gmail_var",
+                                        checkbox_button_frame, 1, 4, W, my_dict)
 #
 gmail_button = my_class.MyButton("Run", checkbox_button_frame, 1, 10, "gmail")
 #
 #
 youtube_var = IntVar()
-youtube_checkbox = my_class.MyCheckButton \
-    ("Open YouTube", youtube_var, "youtube_var", checkbox_button_frame, 2, 4, W, my_dict)
+youtube_checkbox = my_class.MyCheckButton("Open YouTube", youtube_var, "youtube_var",
+                                          checkbox_button_frame, 2, 4, W, my_dict)
 #
 youtube_button = my_class.MyButton("Run", checkbox_button_frame, 2, 10, "youtube")
 #
 #
 spotify_var = IntVar()
-spotify_checkbox = my_class.MyCheckButton \
-    ("Open Spotify", spotify_var, "spotify_var", checkbox_button_frame, 3, 4, W, my_dict)
+spotify_checkbox = my_class.MyCheckButton("Open Spotify", spotify_var, "spotify_var",
+                                          checkbox_button_frame, 3, 4, W, my_dict)
 #
 spotify_button = my_class.MyButton("Run", checkbox_button_frame, 3, 10, "spotify")
 #

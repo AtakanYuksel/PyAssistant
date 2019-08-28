@@ -17,7 +17,6 @@ class MyCheckButton:
 
     def actions(self, var_str, var_val, dic):
         dic.update({var_str: var_val.get()})
-        print(dic)  # TODO: Remove this line later
 
 
 class MyButton:
@@ -36,10 +35,9 @@ class MyButton:
         elif string == "youtube":
             webOpen("https://www.youtube.com/")
         elif string == "spotify":
-            system("explorer.exe shell:appsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
+            system(r"explorer.exe shell:appsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
         elif string == "calendar":
-            system(
-                "explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
+            system(r"explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
         elif string == "calculator":
             system("calc")
         else:
@@ -70,10 +68,9 @@ class MyExecuteButton:
                 elif key == "youtube_var":
                     webOpen("https://www.youtube.com/")
                 elif key == "spotify_var":
-                    system("explorer.exe shell:appsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
+                    system(r"explorer.exe shell:appsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
                 elif key == "calendar_var":
-                    system(
-                        "explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
+                    system(r"explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
                 elif key == "calculator_var":
                     system("calc")
                 else:
@@ -127,14 +124,14 @@ class MyTODOAdderButton:
 
         my_text_field.grid(row=MyTODOAdderButton.my_finished_row, column=1)
 
-        remove_from_finished_button = Button(to_do_list_frame, text="CLR",
+        remove_from_finished_button = Button(to_do_list_frame, text=chr(9587),
                                              bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
                                              activeforeground="#0496d8",
                                              command=lambda: self.to_do_destroy(my_text_field,
                                                                                 remove_from_finished_button,
                                                                                 back_to_to_do_button),
                                              width=3, height=1)
-        remove_from_finished_button.grid(row=MyTODOAdderButton.my_finished_row, column=0)
+        remove_from_finished_button.grid(row=MyTODOAdderButton.my_finished_row, column=2)
 
         back_to_to_do_button = Button(to_do_list_frame, text=chr(9100),
                                       bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
@@ -143,7 +140,7 @@ class MyTODOAdderButton:
                                                                          remove_from_finished_button,
                                                                          back_to_to_do_button),
                                       width=3, height=1)
-        back_to_to_do_button.grid(row=MyTODOAdderButton.my_finished_row, column=2)
+        back_to_to_do_button.grid(row=MyTODOAdderButton.my_finished_row, column=0)
 
         MyTODOAdderButton.my_finished_row += 1
 
