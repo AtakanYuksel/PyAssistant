@@ -80,17 +80,16 @@ class MyExecuteButton:
                     print("How are you here?")
 
 
-class MyTODOAdderButton:  # TODO: Adds TODO's with corresponding text in the Entry
+class MyTODOAdderButton:
     my_row = 0
-    my_column = 0
 
-    my_finished_row = 0
-    my_finished_column = 0
+    my_finished_row = 150
 
     def __init__(self, to_do_frame, to_do_list_frame, text_var):
         entry_field = Entry(to_do_frame, bg="#2C313C", fg="#0496d8", textvariable=text_var)
         entry_field.grid(row=0, column=1, padx=5)
-        button_add = Button(to_do_frame, bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
+        button_add = Button(to_do_frame, bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
+                            activeforeground="#0496d8",
                             text="Add", command=lambda: self.add_to_do(to_do_list_frame, text_var))
         button_add.grid(row=0, column=2)
 
@@ -105,26 +104,71 @@ class MyTODOAdderButton:  # TODO: Adds TODO's with corresponding text in the Ent
                                   bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
                                   command=lambda: self.to_do_destroy(my_text_field, my_remove_button,
                                                                      my_to_finish_button),
-                                  width=1, height=1)
+                                  width=3, height=1)
         my_remove_button.grid(row=MyTODOAdderButton.my_row, column=2)
 
         my_to_finish_button = Button(to_do_list_frame, text="✓",
                                      bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
-                                     command=lambda: print("finish"),
-                                     width=1, height=1)
+                                     command=lambda: self.move_to_finished(to_do_list_frame, my_text_field,
+                                                                           my_remove_button, my_to_finish_button),
+                                     width=3, height=1)
         my_to_finish_button.grid(row=MyTODOAdderButton.my_row, column=0)
         MyTODOAdderButton.my_row += 1
-
 
     def to_do_destroy(self, my_text_field, my_button, my_to_finish_button):
         my_text_field.destroy()
         my_button.destroy()
         my_to_finish_button.destroy()
 
+    def move_to_finished(self, to_do_list_frame, my_text_field, my_button, my_to_finish_button):
+        my_text_field.grid_forget()
+        my_button.destroy()
+        my_to_finish_button.destroy()
 
-class MyFinishedClearButton:
-    def __init__(self, window, row, column):
-        button_clear = Button(window, bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
-                              activeforeground="#0496d8",
-                              text="Clear All")
-        button_clear.grid(row=row, column=column, sticky=S)
+        my_text_field.grid(row=MyTODOAdderButton.my_finished_row, column=1)
+
+        remove_from_finished_button = Button(to_do_list_frame, text="CLR",
+                                             bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
+                                             activeforeground="#0496d8",
+                                             command=lambda: self.to_do_destroy(my_text_field,
+                                                                                remove_from_finished_button,
+                                                                                back_to_to_do_button),
+                                             width=3, height=1)
+        remove_from_finished_button.grid(row=MyTODOAdderButton.my_finished_row, column=0)
+
+        back_to_to_do_button = Button(to_do_list_frame, text=chr(9100),
+                                      bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
+                                      activeforeground="#0496d8",
+                                      command=lambda: self.back_to_to_do(to_do_list_frame, my_text_field,
+                                                                         remove_from_finished_button,
+                                                                         back_to_to_do_button),
+                                      width=3, height=1)
+        back_to_to_do_button.grid(row=MyTODOAdderButton.my_finished_row, column=2)
+
+        MyTODOAdderButton.my_finished_row += 1
+
+    def back_to_to_do(self, to_do_list_frame, my_text_field, remove_from_finished_button, back_to_to_do_button):
+        remove_from_finished_button.destroy()
+        back_to_to_do_button.destroy()
+
+        my_text_field.grid_forget()
+        my_text_field.grid(row=MyTODOAdderButton.my_row, column=1)
+
+        my_new_remove_button = Button(to_do_list_frame, text="X",
+                                      bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
+                                      activeforeground="#0496d8",
+                                      command=lambda: self.to_do_destroy(my_text_field, my_new_remove_button,
+                                                                         my_new_to_finish_button),
+                                      width=3, height=1)
+        my_new_remove_button.grid(row=MyTODOAdderButton.my_row, column=2)
+
+        my_new_to_finish_button = Button(to_do_list_frame, text="✓",
+                                         bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
+                                         activeforeground="#0496d8",
+                                         command=lambda: self.move_to_finished(to_do_list_frame, my_text_field,
+                                                                               my_new_remove_button,
+                                                                               my_new_to_finish_button),
+                                         width=3, height=1)
+        my_new_to_finish_button.grid(row=MyTODOAdderButton.my_row, column=0)
+
+        MyTODOAdderButton.my_row += 1

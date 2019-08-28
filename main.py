@@ -21,6 +21,8 @@ def show_date(date_label):
 def show_day(day_label):
     my_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     day_label.config(text=my_days[datetime.date.today().isoweekday() - 1])
+
+
 #
 #
 my_dict = config_operations.read_cfg()
@@ -28,7 +30,7 @@ print(my_dict)  # TODO: Remove this line later.
 #
 #
 root = Tk()
-root.geometry("513x800+200+200")
+root.geometry("530x800+200+200")
 root.title("PyAssistant")
 root.configure(background="#21252B")
 # root.resizable(width=False, height=1080)
@@ -54,41 +56,43 @@ checkbox_button_frame.grid(row=0, column=1)
 #
 #
 hotspot_var = IntVar()
-hotspot_checkbox = my_class.MyCheckButton\
+hotspot_checkbox = my_class.MyCheckButton \
     ("Open Mobile HotSpot", hotspot_var, "hotspot_var", checkbox_button_frame, 0, 4, W, my_dict)
 #
 hotspot_button = my_class.MyButton("Run", checkbox_button_frame, 0, 10, "hotspot")
 #
 #
 gmail_var = IntVar()
-gmail_checkbox = my_class.MyCheckButton\
+gmail_checkbox = my_class.MyCheckButton \
     ("Open Gmail", gmail_var, "gmail_var", checkbox_button_frame, 1, 4, W, my_dict)
 #
 gmail_button = my_class.MyButton("Run", checkbox_button_frame, 1, 10, "gmail")
 #
 #
 youtube_var = IntVar()
-youtube_checkbox = my_class.MyCheckButton\
+youtube_checkbox = my_class.MyCheckButton \
     ("Open YouTube", youtube_var, "youtube_var", checkbox_button_frame, 2, 4, W, my_dict)
 #
 youtube_button = my_class.MyButton("Run", checkbox_button_frame, 2, 10, "youtube")
 #
 #
 spotify_var = IntVar()
-spotify_checkbox = my_class.MyCheckButton\
+spotify_checkbox = my_class.MyCheckButton \
     ("Open Spotify", spotify_var, "spotify_var", checkbox_button_frame, 3, 4, W, my_dict)
 #
 spotify_button = my_class.MyButton("Run", checkbox_button_frame, 3, 10, "spotify")
 #
 #
 calendar_var = IntVar()
-calendar_checkbox = my_class.MyCheckButton("Open Calendar", calendar_var, "calendar_var", checkbox_button_frame, 4, 4, W, my_dict)
+calendar_checkbox = my_class.MyCheckButton("Open Calendar", calendar_var, "calendar_var", checkbox_button_frame, 4, 4,
+                                           W, my_dict)
 #
 calendar_button = my_class.MyButton("Run", checkbox_button_frame, 4, 10, "calendar")
 #
 #
 calculator_var = IntVar()
-calculator_checkbox = my_class.MyCheckButton("Open Calculator", calculator_var, "calculator_var", checkbox_button_frame, 5, 4, W, my_dict)
+calculator_checkbox = my_class.MyCheckButton("Open Calculator", calculator_var, "calculator_var", checkbox_button_frame,
+                                             5, 4, W, my_dict)
 #
 calculator_button = my_class.MyButton("Run", checkbox_button_frame, 5, 10, "calculator")
 #
@@ -104,8 +108,9 @@ save_config_button.grid(row=3, column=0, sticky=E)
 #
 #
 to_do_frame = Frame(root, bg="#2C313C", bd=4)
-to_do_frame.grid(row=1, column=0, columnspan=2)   # compared to root
-to_do_title = Label(to_do_frame, font=30, background="#2C313C", foreground="#0496d8", text="TO-DO's", width=25, height=2)
+to_do_frame.grid(row=1, column=0, columnspan=2)  # compared to root
+to_do_title = Label(to_do_frame, font=30, background="#2C313C", foreground="#0496d8", text="TO-DO's", width=25,
+                    height=2)
 to_do_title.grid(row=0, column=0)  # compared to to_do_frame
 #
 #
@@ -113,7 +118,8 @@ to_do_list_frame = Frame(root, bg="#21252B", bd=4)
 to_do_list_frame.grid(row=2, column=0, columnspan=2)
 #
 #
-to_do_finished_list = Label(to_do_list_frame, font=30, background="#2C313C", foreground="#0496d8", text="Finished", width=50, height=2)
+to_do_finished_list = Label(to_do_list_frame, font=30, background="#2C313C", foreground="#0496d8", text="FINISHED",
+                            width=50, height=2)
 to_do_finished_list.grid(row=100, column=1)
 #
 #
