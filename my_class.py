@@ -37,15 +37,13 @@ class MyButton:
         elif string == "youtube":
             webOpen("https://www.youtube.com/")
         elif string == "spotify":
-            system(r"explorer.exe shell:appsFolder\
-            SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
+            system("explorer.exe shell:appsFolder\\"
+                   "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
         elif string == "calendar":
-            system(r"explorer.exe shell:appsFolder\
-            microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
+            system("explorer.exe shell:appsFolder\\"
+                   "microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
         elif string == "calculator":
             system("calc")
-        else:
-            print("How are you here?")
         return self
 
 
@@ -74,15 +72,13 @@ class MyExecuteButton:
                 elif key == "youtube_var":
                     webOpen("https://www.youtube.com/")
                 elif key == "spotify_var":
-                    system(r"explorer.exe shell:appsFolder\SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
+                    system("explorer.exe shell:appsFolder\\"
+                           "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify")
                 elif key == "calendar_var":
-                    system(
-                        r"explorer.exe shell:appsFolder\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft"
-                        r".windowslive.calendar")
+                    system("explorer.exe shell:appsFolder\\"
+                           "microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar")
                 elif key == "calculator_var":
                     system("calc")
-                else:
-                    print("How are you here?")
         return self
 
 

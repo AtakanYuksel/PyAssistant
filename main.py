@@ -1,5 +1,5 @@
 from tkinter import *
-import pyautogui    # For some reason removing this screws the program
+import pyautogui    # For some reason removing this screws the program resolution.
 
 import config_operations
 import my_class
