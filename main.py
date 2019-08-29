@@ -40,7 +40,7 @@ if not my_list:
 #
 #
 root = Tk()
-root.geometry("520x1000+0+0")
+root.geometry("520x1000+1390+0")
 root.title("PyAssistant")
 root.configure(background="#21252B")
 root.resizable(width=False, height=True)
