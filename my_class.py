@@ -121,7 +121,7 @@ class MyTODOAdderButton:
                                   command=lambda: self.to_do_destroy(my_text_field, my_remove_button,
                                                                      my_to_finish_button, my_to_do_str, my_list),
                                   width=3, height=1)
-        my_remove_button.grid(row=MyTODOAdderButton.my_row, column=1, sticky=E)
+        my_remove_button.grid(row=MyTODOAdderButton.my_row, column=1, pady=1, sticky=E)
 
         my_to_finish_button = Button(to_do_list_frame, text=chr(10003),
                                      bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
@@ -129,7 +129,7 @@ class MyTODOAdderButton:
                                                                            my_remove_button, my_to_finish_button,
                                                                            my_to_do_str, my_list, 1),
                                      width=3, height=1)
-        my_to_finish_button.grid(row=MyTODOAdderButton.my_row, column=1, sticky=W)
+        my_to_finish_button.grid(row=MyTODOAdderButton.my_row, column=1, pady=1, sticky=W)
 
         if finish_flag == 1:
             self.move_to_finished(to_do_list_frame, my_text_field, my_remove_button,
@@ -162,7 +162,7 @@ class MyTODOAdderButton:
                                                                                 back_to_to_do_button, text_var,
                                                                                 my_list),
                                              width=3, height=1)
-        remove_from_finished_button.grid(row=MyTODOAdderButton.my_finished_row, column=1, sticky=E)
+        remove_from_finished_button.grid(row=MyTODOAdderButton.my_finished_row, column=1, pady=1, sticky=E)
 
         back_to_to_do_button = Button(to_do_list_frame, text=chr(9100),
                                       bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
@@ -171,7 +171,7 @@ class MyTODOAdderButton:
                                                                          remove_from_finished_button,
                                                                          back_to_to_do_button, text_var, my_list, 1),
                                       width=3, height=1)
-        back_to_to_do_button.grid(row=MyTODOAdderButton.my_finished_row, column=1, sticky=W)
+        back_to_to_do_button.grid(row=MyTODOAdderButton.my_finished_row, column=1, pady=1, sticky=W)
 
         if after_flag == 1:
             my_list.append(text_var)
