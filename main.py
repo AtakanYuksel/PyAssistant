@@ -1,4 +1,5 @@
 from tkinter import *
+import pyautogui    # For some reason removing this screws the program
 
 import config_operations
 import my_class

@@ -15,14 +15,11 @@ def read_cfg():
 
 
 def save_cfg(my_dict):
-    try:
-        config_file = open("config.txt", "w")   # save to the file
-        for key, val in my_dict.items():
-            config_file.write(str(key) + " : " + str(val) + "\n")
-        config_file.close()
-        messagebox.showinfo("Info", "Saved successfully.")
-    except:
-        exit(-1)
+    config_file = open("config.txt", "w")   # save to the file
+    for key, val in my_dict.items():
+        config_file.write(str(key) + " : " + str(val) + "\n")
+    config_file.close()
+    messagebox.showinfo("Info", "Saved successfully.")
 
 
 def read_todo():
