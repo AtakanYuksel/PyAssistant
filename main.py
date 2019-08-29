@@ -1,11 +1,15 @@
 from tkinter import *
-from tkinter import messagebox
 
 import config_operations
 import my_class
 
 import time
 import datetime
+
+
+def on_closing():
+    config_operations.write_todo(my_list)
+    root.destroy()
 
 
 def tick(clk):
@@ -130,4 +134,6 @@ todo_text_entry_var = StringVar()
 todo_text_entry = my_class.MyTODOAdderButton(to_do_frame, to_do_list_frame, todo_text_entry_var, my_list)
 #
 #
+
+root.protocol("WM_DELETE_WINDOW", on_closing)
 root.mainloop()

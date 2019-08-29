@@ -80,9 +80,6 @@ class MyExecuteButton:
                     print("How are you here?")
 
 
-my_Str = "&"
-
-
 class MyTODOAdderButton:
     my_row = 0
 
@@ -93,7 +90,7 @@ class MyTODOAdderButton:
         entry_field.grid(row=0, column=1, padx=5)
         button_add = Button(to_do_frame, bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
                             activeforeground="#0496d8",
-                            text="Add", command=lambda: self.add_to_do(to_do_list_frame, text_var, 0))
+                            text="Add", command=lambda: self.add_to_do(to_do_list_frame, text_var, 0, my_list, 1))
         button_add.grid(row=0, column=2)
         self.preset_todos_finished(to_do_list_frame, my_list)
 
@@ -103,14 +100,14 @@ class MyTODOAdderButton:
             for i in my_list[1:]:
                 if i != "[finished]":
                     my_line.set(i)
-                    self.add_to_do(to_do_list_frame, my_line, 0)
+                    self.add_to_do(to_do_list_frame, my_line, 0, my_list, 0)
                 else:
                     for j in my_list[my_list.index(i) + 1:]:
                         my_line.set(j)
-                        self.add_to_do(to_do_list_frame, my_line, 1)
+                        self.add_to_do(to_do_list_frame, my_line, 1, my_list, 0)
                     break
 
-    def add_to_do(self, to_do_list_frame, text_var, finish_flag):
+    def add_to_do(self, to_do_list_frame, text_var, finish_flag, my_list, after_flag):
         my_to_do_str = text_var.get()
         text_var.set("")
         my_text_field = Label(to_do_list_frame, text="- " + my_to_do_str,
@@ -120,27 +117,32 @@ class MyTODOAdderButton:
         my_remove_button = Button(to_do_list_frame, text=chr(9587),
                                   bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
                                   command=lambda: self.to_do_destroy(my_text_field, my_remove_button,
-                                                                     my_to_finish_button),
+                                                                     my_to_finish_button, my_to_do_str, my_list),
                                   width=3, height=1)
         my_remove_button.grid(row=MyTODOAdderButton.my_row, column=2)
 
         my_to_finish_button = Button(to_do_list_frame, text=chr(10003),
                                      bg="#2C313C", fg="#0496d8", activebackground="#2C313C", activeforeground="#0496d8",
                                      command=lambda: self.move_to_finished(to_do_list_frame, my_text_field,
-                                                                           my_remove_button, my_to_finish_button),
+                                                                           my_remove_button, my_to_finish_button, my_to_do_str, my_list, 1),
                                      width=3, height=1)
         my_to_finish_button.grid(row=MyTODOAdderButton.my_row, column=0)
 
         if finish_flag == 1:
-            self.move_to_finished(to_do_list_frame, my_text_field, my_remove_button, my_to_finish_button)
+            self.move_to_finished(to_do_list_frame, my_text_field, my_remove_button, my_to_finish_button, my_to_do_str, my_list, 0)
+
+        if after_flag == 1:
+            my_list.insert(my_list.index("[finished]"), my_to_do_str)
         MyTODOAdderButton.my_row += 1
 
-    def to_do_destroy(self, my_text_field, my_button, my_to_finish_button):
+    def to_do_destroy(self, my_text_field, my_button, my_to_finish_button, text_var, my_list):
         my_text_field.destroy()
         my_button.destroy()
         my_to_finish_button.destroy()
 
-    def move_to_finished(self, to_do_list_frame, my_text_field, my_button, my_to_finish_button):
+        my_list.remove(text_var)
+
+    def move_to_finished(self, to_do_list_frame, my_text_field, my_button, my_to_finish_button, text_var, my_list, after_flag):
         my_text_field.grid_forget()
         my_button.destroy()
         my_to_finish_button.destroy()
@@ -152,7 +154,7 @@ class MyTODOAdderButton:
                                              activeforeground="#0496d8",
                                              command=lambda: self.to_do_destroy(my_text_field,
                                                                                 remove_from_finished_button,
-                                                                                back_to_to_do_button),
+                                                                                back_to_to_do_button, text_var, my_list),
                                              width=3, height=1)
         remove_from_finished_button.grid(row=MyTODOAdderButton.my_finished_row, column=2)
 
@@ -161,13 +163,17 @@ class MyTODOAdderButton:
                                       activeforeground="#0496d8",
                                       command=lambda: self.back_to_to_do(to_do_list_frame, my_text_field,
                                                                          remove_from_finished_button,
-                                                                         back_to_to_do_button),
+                                                                         back_to_to_do_button, text_var, my_list, 1),
                                       width=3, height=1)
         back_to_to_do_button.grid(row=MyTODOAdderButton.my_finished_row, column=0)
 
+        if after_flag == 1:
+            my_list.append(text_var)
+            my_list.remove(text_var)
+
         MyTODOAdderButton.my_finished_row += 1
 
-    def back_to_to_do(self, to_do_list_frame, my_text_field, remove_from_finished_button, back_to_to_do_button):
+    def back_to_to_do(self, to_do_list_frame, my_text_field, remove_from_finished_button, back_to_to_do_button, text_var, my_list, after_flag):
         remove_from_finished_button.destroy()
         back_to_to_do_button.destroy()
 
@@ -178,7 +184,7 @@ class MyTODOAdderButton:
                                       bg="#2C313C", fg="#0496d8", activebackground="#2C313C",
                                       activeforeground="#0496d8",
                                       command=lambda: self.to_do_destroy(my_text_field, my_new_remove_button,
-                                                                         my_new_to_finish_button),
+                                                                         my_new_to_finish_button, text_var, my_list),
                                       width=3, height=1)
         my_new_remove_button.grid(row=MyTODOAdderButton.my_row, column=2)
 
@@ -187,8 +193,12 @@ class MyTODOAdderButton:
                                          activeforeground="#0496d8",
                                          command=lambda: self.move_to_finished(to_do_list_frame, my_text_field,
                                                                                my_new_remove_button,
-                                                                               my_new_to_finish_button),
+                                                                               my_new_to_finish_button, text_var, my_list, 0),
                                          width=3, height=1)
         my_new_to_finish_button.grid(row=MyTODOAdderButton.my_row, column=0)
+
+        if after_flag == 1:
+            my_list.remove(text_var)
+            my_list.insert(my_list.index("[finished]"), text_var)
 
         MyTODOAdderButton.my_row += 1

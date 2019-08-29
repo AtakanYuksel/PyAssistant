@@ -36,4 +36,7 @@ def read_todo():
     return my_list
 
 
-# def write_todo(my_list): # TODO: write back to todo.txt with proper [to-do] and [finished] tags. insert before and after [finished]
+def write_todo(my_list):
+    to_do = open("todo.txt", "w")
+    for a_line in my_list:
+        to_do.write(a_line + "\n")
