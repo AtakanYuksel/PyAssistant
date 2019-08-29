@@ -33,15 +33,11 @@ my_dict = config_operations.read_cfg()
 #
 #
 my_list = config_operations.read_todo()
-if not my_list:
-    my_list.append("[to-do]")
-    my_list.append("[finished]")
-
 print(my_list)
 #
 #
 root = Tk()
-root.geometry("530x1080+1381+0")
+root.geometry("520x1000+0+0")
 root.title("PyAssistant")
 root.configure(background="#21252B")
 root.resizable(width=False, height=True)
@@ -130,8 +126,8 @@ to_do_list_frame.grid(row=2, column=0, columnspan=2)
 #
 #
 to_do_finished_list = Label(to_do_list_frame, font=30, background="#2C313C", foreground="#0496d8", text="FINISHED",
-                            width=50, height=2)
-to_do_finished_list.grid(row=100, column=1)
+                            width=45, height=2)
+to_do_finished_list.grid(row=100, column=1, pady=5)
 #
 #
 todo_text_entry_var = StringVar()
