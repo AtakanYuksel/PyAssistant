@@ -133,6 +133,7 @@ class MyTODOAdderButton:
 
         if after_flag == 1:
             my_list.insert(my_list.index("[finished]"), my_to_do_str)
+
         MyTODOAdderButton.my_row += 1
 
     def to_do_destroy(self, my_text_field, my_button, my_to_finish_button, text_var, my_list):

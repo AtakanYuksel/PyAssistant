@@ -10,7 +10,7 @@ def read_cfg():
             my_dict[key] = int(val.strip())
         config_file.close()
     except FileNotFoundError:   # create/reset the file if it does not exist or is corrupt
-        open("config.txt", "w")
+        new_file = open("config.txt", "w")
     return my_dict
 
 
@@ -32,7 +32,11 @@ def read_todo():
         for a_line in to_do:
             my_list.append(a_line.strip())
     except FileNotFoundError:   # create/reset the file if it does not exist or is corrupt.
-        to_do = open("todo.txt", "w")
+        new_file = open("todo.txt", "w")
+        my_list.append("[to-do]")
+        my_list.append("[finished]")
+        new_file.write("[to-do]")
+        new_file.write("[finished]")
     return my_list
 
 
