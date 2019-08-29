@@ -33,7 +33,9 @@ my_dict = config_operations.read_cfg()
 #
 #
 my_list = config_operations.read_todo()
-print(my_list)
+if not my_list:
+    my_list.append("[to-do]")
+    my_list.append("[finished]")
 #
 #
 root = Tk()
