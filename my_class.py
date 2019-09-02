@@ -1,4 +1,5 @@
 from os import system
+from os.path import abspath
 
 from tkinter import *
 from webbrowser import open as webOpen
@@ -66,7 +67,7 @@ class MyExecuteButton:
             if value == 1:
                 if key == "hotspot_var":
                     system("PowerShell.exe -ExecutionPolicy Bypass -Command \" & "
-                           "\'C:\\Users\\Atakan\\Desktop\\hotspot.ps1\'\"")
+                           "\'C:\\Users\\Atakan\\Desktop\\hotspot.ps1\'\"")  # "\'" + abspath("hotspot.ps1") + "\'\""
                 elif key == "gmail_var":
                     webOpen("https://mail.google.com/mail/u/0/")
                 elif key == "youtube_var":

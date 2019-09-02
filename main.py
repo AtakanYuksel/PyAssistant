@@ -129,7 +129,7 @@ to_do_list_frame.grid(row=2, column=0, columnspan=2)
 #
 #
 to_do_finished_list = Label(to_do_list_frame, font=30, background="#2C313C", foreground="#0496d8", text="FINISHED",
-                            width=45, height=2)
+                            width=50, height=2)
 to_do_finished_list.grid(row=100, column=1, pady=5)
 #
 #
