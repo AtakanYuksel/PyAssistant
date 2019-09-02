@@ -119,7 +119,7 @@ save_config_button.grid(row=3, column=0, sticky=E)
 #
 to_do_frame = Frame(root, bg="#2C313C", bd=4)
 to_do_frame.grid(row=1, column=0, columnspan=2)  # compared to root
-to_do_title = Label(to_do_frame, font=30, background="#2C313C", foreground="#0496d8", text="TO-DO's", width=25,
+to_do_title = Label(to_do_frame, font=30, background="#2C313C", foreground="#0496d8", text="TO-DO's", width=30,
                     height=2)
 to_do_title.grid(row=0, column=0)  # compared to to_do_frame
 #
@@ -129,7 +129,7 @@ to_do_list_frame.grid(row=2, column=0, columnspan=2)
 #
 #
 to_do_finished_list = Label(to_do_list_frame, font=30, background="#2C313C", foreground="#0496d8", text="FINISHED",
-                            width=50, height=2)
+                            width=55, height=2)
 to_do_finished_list.grid(row=100, column=1, pady=5)
 #
 #
