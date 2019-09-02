@@ -1,5 +1,8 @@
 from tkinter import *
+
 import pyautogui  # For some reason removing this screws the program resolution.
+import requests
+import pytemperature as pyt
 
 import config_operations
 import my_class
@@ -20,13 +23,21 @@ def tick(clk):
 
 
 def show_date(date_label):
-    date_label.config(text=(datetime.date.today()).strftime("%d/%m/%y"))
-
-
-def show_day(day_label):
     my_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    day_label.config(text=my_days[datetime.date.today().isoweekday() - 1])
+    date_label.config(text=(datetime.date.today()).strftime("%d/%m/%y") + " - " + my_days[datetime.date.today().isoweekday() - 1])
 
+
+def show_weather(weather_label):
+    try:
+        r = requests.get("https://api.openweathermap.org/data/2.5/weather?q=Ayd%C4%B1n,TR&APPID=1a605e94b1441e47b27482f8faee924c")
+        data_json = r.json()
+        temp = pyt.k2c(data_json["main"]["temp"])
+        weather = data_json["weather"][0]["main"]
+        weather_label.config(text=str(round(temp)) + "°C" + " - " + weather)
+        weather_label.after(600000, lambda: show_weather(weather_label))
+    except requests.exceptions.ConnectionError:
+        weather_label.config(text="No internet connection")
+        weather_label.after(600000, lambda: show_weather(weather_label))
 
 #
 #
@@ -43,7 +54,7 @@ root = Tk()
 root.geometry("520x1000+1390+0")
 root.title("PyAssistant")
 root.configure(background="#21252B")
-root.resizable(width=False, height=True)
+
 #
 #
 clock_date_frame = Frame(root, bg="#21252B", bd=4)
@@ -52,13 +63,13 @@ my_clock = Label(clock_date_frame, font=('calibri', 40, 'bold'), background="#2C
 my_clock.grid(row=0, column=0)
 tick(my_clock)
 #
-my_date = Label(clock_date_frame, font=("calibri", 20), background="#2C313C", foreground="#0496d8")
+my_date = Label(clock_date_frame, font=("calibri", 18), background="#2C313C", foreground="#0496d8")
 my_date.grid(row=1, column=0, sticky=EW)  # NSEW fills
 show_date(my_date)
 #
-my_day = Label(clock_date_frame, font=("calibri", 15), background="#2C313C", foreground="#0496d8")
-my_day.grid(row=2, column=0, sticky=EW)
-show_day(my_day)
+my_weather = Label(clock_date_frame, font=("calibri", 15), background="#2C313C", foreground="#0496d8")
+my_weather.grid(row=2, column=0, sticky=EW)
+show_weather(my_weather)
 #
 #
 checkbox_button_frame = Frame(root, bg="#21252B", bd=4)
@@ -119,8 +130,8 @@ save_config_button.grid(row=3, column=0, sticky=E)
 #
 to_do_frame = Frame(root, bg="#2C313C", bd=4)
 to_do_frame.grid(row=1, column=0, columnspan=2)  # compared to root
-to_do_title = Label(to_do_frame, font=30, background="#2C313C", foreground="#0496d8", text="TO-DO's", width=30,
-                    height=2)
+to_do_title = Label(to_do_frame, font=30, background="#2C313C", foreground="#0496d8", text="TO-DO's",
+                    width=25, height=2)
 to_do_title.grid(row=0, column=0)  # compared to to_do_frame
 #
 #
@@ -129,7 +140,7 @@ to_do_list_frame.grid(row=2, column=0, columnspan=2)
 #
 #
 to_do_finished_list = Label(to_do_list_frame, font=30, background="#2C313C", foreground="#0496d8", text="FINISHED",
-                            width=55, height=2)
+                            width=45, height=2)
 to_do_finished_list.grid(row=100, column=1, pady=5)
 #
 #
