@@ -24,12 +24,14 @@ def tick(clk):
 
 def show_date(date_label):
     my_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    date_label.config(text=(datetime.date.today()).strftime("%d/%m/%y") + " - " + my_days[datetime.date.today().isoweekday() - 1])
+    date_label.config(text=(datetime.date.today()).strftime("%d/%m/%y")
+                           + " - " + my_days[datetime.date.today().isoweekday() - 1])
 
 
 def show_weather(weather_label):
     try:
-        r = requests.get("https://api.openweathermap.org/data/2.5/weather?q=Ayd%C4%B1n,TR&APPID=1a605e94b1441e47b27482f8faee924c")
+        r = requests.get(
+            "https://api.openweathermap.org/data/2.5/weather?q=Ayd%C4%B1n,TR&APPID=1a605e94b1441e47b27482f8faee924c")
         data_json = r.json()
         temp = pyt.k2c(data_json["main"]["temp"])
         weather = data_json["weather"][0]["main"]
@@ -37,7 +39,8 @@ def show_weather(weather_label):
         weather_label.after(600000, lambda: show_weather(weather_label))
     except requests.exceptions.ConnectionError:
         weather_label.config(text="No internet connection")
-        weather_label.after(600000, lambda: show_weather(weather_label))
+        weather_label.after(10000, lambda: show_weather(weather_label))
+
 
 #
 #
@@ -54,6 +57,7 @@ root = Tk()
 root.geometry("520x1000+1390+0")
 root.title("PyAssistant")
 root.configure(background="#21252B")
+root.resizable(width=False, height=False)
 
 #
 #
