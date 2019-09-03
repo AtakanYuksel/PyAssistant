@@ -17,14 +17,19 @@ def on_closing():
 
 
 def tick(clk):
-    string = time.strftime('%H:%M:%S')
-    clk.config(text=string)
+    string = time.strftime('%H:%M')
+    new_string = (time.strftime("%H:%M")).split(":")
+    seconds = time.strftime("%S")
+    if int(seconds) % 2 == 0:
+        clk.config(text=string)
+    else:
+        clk.config(text=new_string[0] + " " + new_string[1])
     clk.after(1000, lambda: tick(clk))
 
 
 def show_date(date_label):
     my_days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    date_label.config(text=(datetime.date.today()).strftime("%d/%m/%y")
+    date_label.config(text=datetime.date.today().strftime("%d/%m/%y")
                            + " - " + my_days[datetime.date.today().isoweekday() - 1])
 
 
@@ -39,7 +44,7 @@ def show_weather(weather_label):
         weather_label.after(600000, lambda: show_weather(weather_label))
     except requests.exceptions.ConnectionError:
         weather_label.config(text="No internet connection")
-        weather_label.after(10000, lambda: show_weather(weather_label))
+        weather_label.after(1000, lambda: show_weather(weather_label))
 
 
 #
@@ -64,7 +69,7 @@ root.resizable(width=False, height=False)
 clock_date_frame = Frame(root, bg="#21252B", bd=4)
 clock_date_frame.grid(row=0, column=0)
 my_clock = Label(clock_date_frame, font=('calibri', 40, 'bold'), background="#2C313C", foreground="#0496d8")
-my_clock.grid(row=0, column=0)
+my_clock.grid(row=0, column=0, sticky=EW)
 tick(my_clock)
 #
 my_date = Label(clock_date_frame, font=("calibri", 18), background="#2C313C", foreground="#0496d8")
