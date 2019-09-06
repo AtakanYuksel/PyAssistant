@@ -126,7 +126,7 @@ calculator_checkbox = my_class.MyCheckButton("Open Calculator", calculator_var, 
 #
 calculator_button = my_class.MyButton("Run", checkbox_button_frame, 5, 10, "calculator")
 #
-# text, window, row, column, my_dict
+#
 execute_button = my_class.MyExecuteButton("Execute", clock_date_frame, 3, 0, my_dict)
 #
 #
