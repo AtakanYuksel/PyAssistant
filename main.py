@@ -59,7 +59,7 @@ if not my_list:
 #
 #
 root = Tk()
-root.geometry("520x1000+1390+0")
+root.geometry("490x1000+1390+0")
 root.title("PyAssistant")
 root.configure(background="#21252B")
 root.resizable(width=False, height=False)
@@ -140,7 +140,7 @@ save_config_button.grid(row=3, column=0, sticky=E)
 to_do_frame = Frame(root, bg="#2C313C", bd=4)
 to_do_frame.grid(row=1, column=0, columnspan=2)  # compared to root
 to_do_title = Label(to_do_frame, font=30, background="#2C313C", foreground="#0496d8", text="TO-DO's",
-                    width=25, height=2)
+                    width=23 , height=2)
 to_do_title.grid(row=0, column=0)  # compared to to_do_frame
 #
 #
@@ -149,7 +149,7 @@ to_do_list_frame.grid(row=2, column=0, columnspan=2)
 #
 #
 to_do_finished_list = Label(to_do_list_frame, font=30, background="#2C313C", foreground="#0496d8", text="FINISHED",
-                            width=45, height=2)
+                            width=43, height=2)
 to_do_finished_list.grid(row=100, column=1, pady=5)
 #
 #
