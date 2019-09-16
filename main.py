@@ -1,6 +1,6 @@
 from tkinter import *
 
-import pyautogui  # For some reason removing this screws the program resolution.
+import pyautogui  # For some reason removing this messes the program's resolution.
 import requests
 import pytemperature as pyt
 
@@ -59,7 +59,7 @@ if not my_list:
 #
 #
 root = Tk()
-root.geometry("490x1000+1390+0")
+root.geometry("520x1000+1390+0")
 root.title("PyAssistant")
 root.configure(background="#21252B")
 root.resizable(width=False, height=False)
